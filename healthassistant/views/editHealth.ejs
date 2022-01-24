@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= day %>요일 운동 시작!</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Simple line icons-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&family=Anton&family=Jua&family=Fuzzy+Bubbles:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <style>
+      .title-fontA {
+        font-family: 'Fuzzy Bubbles', cursive;
+      }
+      .title-fontB {
+        font-family: 'Anton', sans-serif;
+      }
+      .day-fontB {
+          font-family: 'Jua';
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-expand-lg navbar-light bgtop">
+        <div class="container text-center mx-4 my-1">
+          <a class="navbar-brand title-fontA" href="/daySelect">Health Assistant</a>
+        </div>
+        <div class="mx-3">
+            <a class="otherUser title-fontB" href="/otherUser">OTHER</a>
+          </div>
+          <div class="mx-3">
+            <a class="otherUser title-fontB" href="/myHealth">MY</a>
+          </div>
+          <div class="mx-3">
+            <a class="otherUser title-fontB" href="/auth/logout/kakao">LOGOUT</a>
+          </div>
+    </div>
+    <section class="container">
+        <div>
+            <h1 class="day-fontB mt-5 text-center"><%= day%>요일 운동 수정</h1>
+          </div>
+    <div class="mt-5">
+        <table class="table text-center">
+                <tr>
+                    <th>운동 방법</th>
+                    <th>자극 부위</th>
+                    <th>세트</th>
+                    <th>횟수</th>
+                    <th>쉬는시간(초)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                
+                <% for(let i=0; i <arr1.length ;i++) {
+                %>
+                    <% if(arr1[i].way == Id) { %>
+                        <tr>
+                            <form method="POST" action="" id="editForm">
+                                <td><input class="w-40" type="text" name="way" /></td>
+                                <td><input class="w-40" type="text" name="part" /></td>
+                                <td><input class="w-40" type="text" name="setNumber" /></td>
+                                <td><input class="w-40" type="text" name="number" /></td>
+                                <td><input class="w-40" type="text" name="breakTime" /></td>
+                                <td><button class="btn" type="submit"><i class="far fa-check-circle"></i></button></td>
+                                <td></td>
+                            </form>
+                        </tr>
+                <% } else {%>
+                <div>
+                    <tr>
+                        <td><%= arr1[i].way %></td>
+                        <td><%= arr1[i].part %></td>
+                        <td><%= arr1[i].setNumber %></td>
+                        <td><%= arr1[i].number %></td>
+                        <td><%= arr1[i].breakTime %></td>
+                        <td></td>
+                        <td></td>
+                </tr>
+                </div>
+                <% }} %>
+        </table>
+    </div>
+</section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/scripts.js"></script>
+  </body>
+</html>
